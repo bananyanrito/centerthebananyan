@@ -1,5 +1,5 @@
 import React from 'react';
-import { Page } from './Page';
+import { BasePage } from './BasePage';
 import { Button } from '../buttons/Button';
 import { PageText } from '../../constants';
 
@@ -9,7 +9,7 @@ interface WinPageProps {
 
 export const WinPage: React.FC<WinPageProps> = ({ hasGodMode }) => {
   return (
-    <Page column headerText={PageText.WIN}>
+    <BasePage column headerText={PageText.WIN}>
       {hasGodMode && (
         <Button
           onClick={() =>
@@ -22,6 +22,6 @@ export const WinPage: React.FC<WinPageProps> = ({ hasGodMode }) => {
           Claim Prize
         </Button>
       )}
-    </Page>
+    </BasePage>
   );
 };

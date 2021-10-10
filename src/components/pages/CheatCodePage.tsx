@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Page } from './Page';
+import { BasePage } from './BasePage';
 import { Input } from '../Input';
 import { Button } from '../buttons/Button';
 import { GodMode, PageText } from '../../constants';
@@ -26,7 +26,7 @@ export const CheatCodePage: React.FC<CheatCodePageProps> = ({
   };
 
   return (
-    <Page column headerText={PageText.CHEAT_CODE}>
+    <BasePage column headerText={PageText.CHEAT_CODE}>
       {hasGodMode && <p>God mode is ON</p>}
       <Input onChange={e => setInputValue(e.target.value)} value={inputValue} />
       <Button
@@ -37,6 +37,6 @@ export const CheatCodePage: React.FC<CheatCodePageProps> = ({
       >
         Check
       </Button>
-    </Page>
+    </BasePage>
   );
 };

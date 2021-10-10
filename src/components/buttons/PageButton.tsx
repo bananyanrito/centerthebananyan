@@ -3,7 +3,7 @@ import { Button } from './Button';
 import { ButtonGroupContainer } from '../Container';
 import { PageState, GodMode } from '../../constants';
 
-interface PageStateButtonProps {
+interface PageButtonProps {
   pageState: PageState;
   setPageState: (value: React.SetStateAction<PageState>) => void;
   godMode: string;
@@ -12,7 +12,7 @@ interface PageStateButtonProps {
   incrementAttempts: () => void;
 }
 
-export const PageButton: React.FC<PageStateButtonProps> = ({
+export const PageButton: React.FC<PageButtonProps> = ({
   pageState,
   setPageState,
   godMode,

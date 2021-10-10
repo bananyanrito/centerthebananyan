@@ -1,6 +1,6 @@
 import React from 'react';
 import { CenterContainer } from '../Container';
-import { Page } from './Page';
+import { BasePage } from './BasePage';
 import { BananyanDimensions } from '../../constants';
 
 interface CanvasPageProps {
@@ -9,8 +9,8 @@ interface CanvasPageProps {
 
 export const CanvasPage: React.FC<CanvasPageProps> = ({ hasGodMode }) => {
   return (
-    <Page>
+    <BasePage>
       <CenterContainer cheatMode={hasGodMode} {...BananyanDimensions} />
-    </Page>
+    </BasePage>
   );
 };

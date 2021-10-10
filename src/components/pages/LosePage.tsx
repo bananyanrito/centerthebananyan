@@ -1,5 +1,5 @@
 import React from 'react';
-import { Page } from './Page';
+import { BasePage } from './BasePage';
 import { PageText } from '../../constants';
 
 interface LosePageProps {
@@ -7,7 +7,7 @@ interface LosePageProps {
 }
 
 export const LosePage: React.FC<LosePageProps> = ({ showHint }) => (
-  <Page column headerText={PageText.LOSE}>
+  <BasePage column headerText={PageText.LOSE}>
     {showHint && <p>Hint: ↑↑↓↓←→←→B A START</p>}
-  </Page>
+  </BasePage>
 );

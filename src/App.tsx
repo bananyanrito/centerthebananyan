@@ -1,14 +1,8 @@
 import React, { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { AppContainer, AbsolutePosContainer } from './components/Container';
-import { PageButton } from './components/buttons/PageButton';
-import { Button } from './components/buttons/Button';
-import { SplashPage } from './components/pages/SplashPage';
-import { CheatCodePage } from './components/pages/CheatCodePage';
-import { WinPage } from './components/pages/WinPage';
-import { LosePage } from './components/pages/LosePage';
-import { CanvasPage } from './components/pages/CanvasPage';
-import { Bananyan } from './components/pages/Bananyan';
+import { Button, PageButton } from './components/buttons';
+import { Page } from './components/pages';
 import { PageState, GodMode, ITheme, PVRTheme, TomatoTheme } from './constants';
 
 const App: React.FC = () => {
@@ -45,11 +39,16 @@ const App: React.FC = () => {
           <h2>Attempts: {attempts}</h2>
           <ThemeProvider theme={getOtherTheme()}>
             <Button onClick={() => setTheme(getOtherTheme())}>
-              Change Theme
+              Shiny Object
             </Button>
           </ThemeProvider>
         </AbsolutePosContainer>
-        {showPage(pageState, godModeActivation, godMode, attempts)}
+        <Page
+          pageState={pageState}
+          turnOnCheat={godModeActivation}
+          godMode={godMode}
+          attempts={attempts}
+        />
         <PageButton
           pageState={pageState}
           setPageState={setPageState}
@@ -61,37 +60,6 @@ const App: React.FC = () => {
       </AppContainer>
     </ThemeProvider>
   );
-};
-
-const showPage = (
-  pageState: PageState,
-  turnOnCheat: Function,
-  godMode: string,
-  attempts: number
-) => {
-  const hasGodMode = godMode !== GodMode.NAY;
-  switch (pageState) {
-    case PageState.SPLASH:
-      return <SplashPage />;
-    case PageState.CANVAS:
-      return (
-        <>
-          <CanvasPage hasGodMode={hasGodMode} />
-          <Bananyan
-            show={pageState === PageState.CANVAS}
-            hasGodMode={hasGodMode}
-          />
-        </>
-      );
-    case PageState.WIN:
-      return <WinPage hasGodMode={hasGodMode} />;
-    case PageState.LOSE:
-      return <LosePage showHint={attempts > 1} />;
-    case PageState.CHEAT_CODE:
-      return (
-        <CheatCodePage turnOnCheat={turnOnCheat} hasGodMode={hasGodMode} />
-      );
-  }
 };
 
 export default App;

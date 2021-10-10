@@ -1,25 +1,48 @@
 import React from 'react';
-import styled from 'styled-components';
-import { CenterContainer, PageContainer } from '../Container';
-import { ITheme } from '../../constants';
+import { PageState, GodMode } from '../../constants';
+import {
+  SplashPage,
+  CheatCodePage,
+  WinPage,
+  LosePage,
+  CanvasPage,
+  Bananyan,
+} from './';
 
 interface PageProps {
-  children?: React.ReactNode;
-  headerText?: string;
-  column?: boolean;
+  pageState: PageState;
+  turnOnCheat: (mode: GodMode) => void;
+  godMode: string;
+  attempts: number;
 }
 
-const Title = styled.h1<{ theme: ITheme }>`
-  font-size: 2em;
-  text-align: center;
-  color: ${({ theme }) => theme.main};
-`;
-
-export const Page: React.FC<PageProps> = ({ headerText, children, column }) => (
-  <PageContainer>
-    <CenterContainer column={column}>
-      <Title>{headerText}</Title>
-      {children}
-    </CenterContainer>
-  </PageContainer>
-);
+export const Page: React.FC<PageProps> = ({
+  pageState,
+  turnOnCheat,
+  godMode,
+  attempts,
+}) => {
+  const hasGodMode = godMode !== GodMode.NAY;
+  switch (pageState) {
+    case PageState.SPLASH:
+      return <SplashPage />;
+    case PageState.CANVAS:
+      return (
+        <>
+          <CanvasPage hasGodMode={hasGodMode} />
+          <Bananyan
+            show={pageState === PageState.CANVAS}
+            hasGodMode={hasGodMode}
+          />
+        </>
+      );
+    case PageState.WIN:
+      return <WinPage hasGodMode={hasGodMode} />;
+    case PageState.LOSE:
+      return <LosePage showHint={attempts > 1} />;
+    case PageState.CHEAT_CODE:
+      return (
+        <CheatCodePage turnOnCheat={turnOnCheat} hasGodMode={hasGodMode} />
+      );
+  }
+};
