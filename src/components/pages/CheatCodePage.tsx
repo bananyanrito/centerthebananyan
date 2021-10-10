@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Page } from './Page';
 import { Input } from '../Input';
 import { Button } from '../buttons/Button';
-import { GodMode, PageText, CheatCodes } from '../../constants';
+import { GodMode, PageText } from '../../constants';
+import { CheatCodes } from '../../cheatCodes';
 
 interface CheatCodePageProps {
   turnOnCheat: Function;

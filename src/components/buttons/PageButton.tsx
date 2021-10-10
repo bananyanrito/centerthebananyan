@@ -71,9 +71,11 @@ export const PageButton: React.FC<PageStateButtonProps> = ({
             <Button onClick={() => setPageState(PageState.CANVAS)}>
               Back To Game
             </Button>
-            <Button onClick={() => setGodMode(GodMode.NAY)}>
-              Turn off God Mode
-            </Button>
+            {godMode !== GodMode.NAY && (
+              <Button onClick={() => setGodMode(GodMode.NAY)}>
+                Turn off God Mode
+              </Button>
+            )}
           </>
         );
     }

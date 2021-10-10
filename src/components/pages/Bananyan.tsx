@@ -11,8 +11,12 @@ interface BananyanProps {
 const MOVEMENT_SENSITIVITY = 10;
 
 export const Bananyan: React.FC<BananyanProps> = ({ hasGodMode, show }) => {
-  const [top, setTop] = useState<number>(0);
-  const [left, setLeft] = useState<number>(0);
+  const [top, setTop] = useState<number>(
+    () => window.innerHeight * Math.random() * 0.5
+  );
+  const [left, setLeft] = useState<number>(
+    () => window.innerWidth * Math.random() * 0.8
+  );
 
   const onKeyDownHandler = (e: React.KeyboardEvent<HTMLElement>) => {
     let newTop = top,

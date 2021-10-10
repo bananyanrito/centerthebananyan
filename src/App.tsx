@@ -9,7 +9,7 @@ import { WinPage } from './components/pages/WinPage';
 import { LosePage } from './components/pages/LosePage';
 import { CanvasPage } from './components/pages/CanvasPage';
 import { Bananyan } from './components/pages/Bananyan';
-import { PageState, GodMode, ITheme, PVRTheme, CFBTheme } from './constants';
+import { PageState, GodMode, ITheme, PVRTheme, TomatoTheme } from './constants';
 
 const App: React.FC = () => {
   const [pageState, setPageState] = useState<PageState>(PageState.SPLASH);
@@ -35,7 +35,8 @@ const App: React.FC = () => {
     localStorage.setItem('attempts', '' + newAttempts);
   };
 
-  const getOtherTheme = () => (currentTheme === PVRTheme ? CFBTheme : PVRTheme);
+  const getOtherTheme = () =>
+    currentTheme === PVRTheme ? TomatoTheme : PVRTheme;
 
   return (
     <ThemeProvider theme={currentTheme}>
@@ -75,11 +76,11 @@ const showPage = (
     case PageState.CANVAS:
       return (
         <>
+          <CanvasPage hasGodMode={hasGodMode} />
           <Bananyan
             show={pageState === PageState.CANVAS}
             hasGodMode={hasGodMode}
           />
-          <CanvasPage hasGodMode={hasGodMode} />
         </>
       );
     case PageState.WIN:

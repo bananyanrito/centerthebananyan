@@ -19,13 +19,6 @@ export enum GodMode {
   NADIA = 'nadia',
 }
 
-export enum CheatCodes {
-  KONAMI = 'konami',
-  KONAMI_CODE = 'konami code',
-  NINTENDO = 'nintendo',
-  NADIA = 'nadiashouldtotallygetthegigonnftteam',
-}
-
 export const BananyanDimensions = {
   minWidth: '50px',
   minHeight: '50px',
@@ -52,8 +45,8 @@ export const PVRTheme: ITheme = {
   fontFamily: "'Roboto', sans-serif",
 };
 
-export const CFBTheme: ITheme = {
-  main: 'cornflowerblue',
+export const TomatoTheme: ITheme = {
+  main: 'tomato',
   secondary: 'white',
   fontFamily: "'Roboto', sans-serif",
 };
