@@ -16,23 +16,36 @@ export const CheatCodePage: React.FC<CheatCodePageProps> = ({
 }) => {
   const [inputValue, setInputValue] = useState<string>('');
 
-  const checkCheatCode = (): string => {
+  const checkCheatCode = (): void => {
     const mode = Object.values(CheatCodes)
       .filter(cheatCode => cheatCode === inputValue.toLowerCase())
       .map(matchingCheatCode =>
         matchingCheatCode === CheatCodes.NADIA ? GodMode.NADIA : GodMode.NORMAL
-      );
-    return mode.pop() ?? GodMode.NAY;
+      )
+      .pop();
+
+    mode && turnOnCheat(mode);
+    setInputValue('');
+  };
+
+  const pressedEnter = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      checkCheatCode();
+    }
   };
 
   return (
     <BasePage column headerText={PageText.CHEAT_CODE}>
       {hasGodMode && <p>God mode is ON</p>}
-      <Input onChange={e => setInputValue(e.target.value)} value={inputValue} />
+      <Input
+        onChange={e => setInputValue(e.target.value)}
+        value={inputValue}
+        aria-label={'Cheat code input'}
+        onKeyDown={pressedEnter}
+      />
       <Button
         onClick={() => {
-          turnOnCheat(checkCheatCode());
-          setInputValue('');
+          checkCheatCode();
         }}
       >
         Check

@@ -39,7 +39,7 @@ export const Page: React.FC<PageProps> = ({
     case PageState.WIN:
       return <WinPage hasGodMode={hasGodMode} />;
     case PageState.LOSE:
-      return <LosePage showHint={attempts > 1} />;
+      return <LosePage attempts={attempts} />;
     case PageState.CHEAT_CODE:
       return (
         <CheatCodePage turnOnCheat={turnOnCheat} hasGodMode={hasGodMode} />

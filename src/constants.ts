@@ -19,6 +19,8 @@ export enum GodMode {
   NADIA = 'nadia',
 }
 
+export const PRIZE_URL = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ&t=1s';
+
 export const BananyanDimensions = {
   minWidth: '50px',
   minHeight: '50px',

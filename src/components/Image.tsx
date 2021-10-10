@@ -11,6 +11,7 @@ const StyledImage = styled.img`
   }
 `;
 
+/** doc says nay nay to ref forward of functional components */
 export const Image = React.forwardRef<HTMLImageElement>((props, ref) => {
   return (
     <FlexContainer tabIndex={1} {...BananyanDimensions}>
@@ -18,13 +19,12 @@ export const Image = React.forwardRef<HTMLImageElement>((props, ref) => {
         alt='bananyan cat'
         src='/image/goldenbananyan.png'
         ref={ref}
-        onFocus={() => console.log('mama has focus')}
       />
     </FlexContainer>
   );
 });
 
-export class ImageContainer extends React.PureComponent<{}, {}> {
+export class ImageContainer extends React.Component<{}, {}> {
   private imageRef = createRef<HTMLImageElement>();
 
   componentDidMount() {
@@ -44,7 +44,6 @@ export class ImageContainer extends React.PureComponent<{}, {}> {
           alt='bananyan cat'
           src='/image/goldenbananyan.png'
           ref={this.imageRef}
-          onFocus={() => console.log('mama has focus')}
         />
       </FlexContainer>
     );

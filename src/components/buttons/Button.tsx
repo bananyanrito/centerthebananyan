@@ -12,6 +12,12 @@ const StyleButton = styled.button<{ theme: ITheme }>`
   &:hover {
     background: ${({ theme }) => theme.main};
     color: ${({ theme }) => theme.secondary};
+    outline: none;
+  }
+
+  &:focus {
+    outline: none;
+    text-decoration: underline;
   }
 
   border: ${({ theme }) => `2px solid ${theme.main}`};
@@ -19,7 +25,6 @@ const StyleButton = styled.button<{ theme: ITheme }>`
 `;
 
 interface ButtonProps {
-  children: React.ReactNode;
   onClick: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
