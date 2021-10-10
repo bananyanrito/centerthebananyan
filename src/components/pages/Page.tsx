@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { CenterContainer, PageContainer } from '../Container';
-import { PageText } from '../../constants';
+import { ITheme } from '../../constants';
 
 interface PageProps {
   children?: React.ReactNode;
@@ -9,10 +9,10 @@ interface PageProps {
   column?: boolean;
 }
 
-const Title = styled.h1`
+const Title = styled.h1<{ theme: ITheme }>`
   font-size: 2em;
   text-align: center;
-  color: palevioletred;
+  color: ${({ theme }) => theme.main};
 `;
 
 export const Page: React.FC<PageProps> = ({ headerText, children, column }) => (
@@ -23,5 +23,3 @@ export const Page: React.FC<PageProps> = ({ headerText, children, column }) => (
     </CenterContainer>
   </PageContainer>
 );
-
-export const SplashPage: React.FC = () => <Page headerText={PageText.SPLASH} />;

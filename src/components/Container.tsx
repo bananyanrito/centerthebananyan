@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import { ITheme } from '../constants';
 
-export const Container = styled.div`
-  font-family: 'Roboto', sans-serif;
-  color: palevioletred;
+export const Container = styled.div<{ theme: ITheme }>`
+  font-family: ${({ theme }) => theme.fontFamily};
+  color: ${({ theme }) => theme.main};
   overflow: hidden;
 `;
 
@@ -20,6 +21,7 @@ export const CenterContainer = styled(FlexContainer)<{
   width?: string;
   height?: string;
   cheatMode?: boolean;
+  theme: ITheme;
 }>`
   flex-direction: ${props => (props.column ? 'column' : 'row')};
   flex-wrap: nowrap;
@@ -30,8 +32,8 @@ export const CenterContainer = styled(FlexContainer)<{
     notNullOrUndefined(minHeight) && `min-height: ${minHeight}`};
   ${({ width }) => notNullOrUndefined(width) && `width: ${width}`};
   ${({ height }) => notNullOrUndefined(height) && `height: ${height}`};
-  border: ${({ cheatMode }) =>
-    cheatMode ? '2px solid palevioletred' : 'none'};
+  border: ${({ cheatMode, theme }) =>
+    cheatMode ? `2px solid ${theme.main}` : 'none'};
 `;
 
 export const AppContainer = styled(CenterContainer)`
@@ -53,6 +55,7 @@ export const ButtonGroupContainer = styled(CenterContainer)`
 `;
 
 export const AbsolutePosContainer = styled(Container)<{
+  column?: boolean;
   left?: number;
   right?: number;
   top?: number;
@@ -62,10 +65,12 @@ export const AbsolutePosContainer = styled(Container)<{
   width?: string;
   height?: string;
   cheatMode?: boolean;
+  theme: ITheme;
 }>`
   position: absolute;
-  border: ${({ cheatMode }) =>
-    cheatMode ? '2px solid palevioletred' : 'none'};
+  flex-direction: ${({ column }) => (column ? 'column' : 'row')};
+  border: ${({ cheatMode, theme }) =>
+    cheatMode ? `2px solid ${theme.main}` : 'none'};
   ${({ left }) => notNullOrUndefined(left) && `left: ${left}px`};
   ${({ right }) => notNullOrUndefined(right) && `right: ${right}px`};
   ${({ top }) => notNullOrUndefined(top) && `top: ${top}px`};

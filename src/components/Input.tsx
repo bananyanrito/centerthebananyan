@@ -1,14 +1,15 @@
 import styled from 'styled-components';
+import { ITheme } from '../constants';
 
-export const Input = styled.input`
+export const Input = styled.input<{ theme: ITheme }>`
   border: none;
-  border-bottom: 1px solid palevioletred;
+  border-bottom: ${({ theme }) => `1px solid ${theme.main}`};
   &:focus {
     outline: none;
   }
   width: 100%;
   padding: 0.5em;
-  font-family: 'Roboto', sans-serif;
-  color: palevioletred;
+  font-family: ${({ theme }) => theme.fontFamily};
+  color: ${({ theme }) => theme.main};
   font-size: 1em;
 `;

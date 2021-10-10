@@ -39,3 +39,21 @@ export const AppDimensions = {
   minWidth: '200px',
   minHeight: '200px',
 };
+
+export interface ITheme {
+  main: string;
+  secondary: string;
+  fontFamily: string;
+}
+
+export const PVRTheme: ITheme = {
+  main: 'palevioletred',
+  secondary: 'white',
+  fontFamily: "'Roboto', sans-serif",
+};
+
+export const CFBTheme: ITheme = {
+  main: 'cornflowerblue',
+  secondary: 'white',
+  fontFamily: "'Roboto', sans-serif",
+};

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { AbsolutePosContainer } from '../Container';
-import { Image, ImageContainer } from '../Image';
+import { ImageContainer } from '../Image';
 import { BananyanDimensions } from '../../constants';
 
 interface BananyanProps {
@@ -51,7 +51,6 @@ export const Bananyan: React.FC<BananyanProps> = ({ hasGodMode, show }) => {
       {...BananyanDimensions}
       onKeyDown={onKeyDownHandler}
     >
-      {/* <Image {...BananyanDimensions} ref={bananyanRef} /> */}
       <ImageContainer ref={bananyanRef} />
     </AbsolutePosContainer>
   ) : null;

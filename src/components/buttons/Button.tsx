@@ -1,18 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
+import { ITheme } from '../../constants';
 
-const StyleButton = styled.button`
-  font-family: 'Roboto', sans-serif;
-  background: white;
-  color: palevioletred;
+const StyleButton = styled.button<{ theme: ITheme }>`
+  font-family: ${({ theme }) => theme.fontFamily};
+  background: ${({ theme }) => theme.secondary};
+  color: ${({ theme }) => theme.main};
   font-size: 1em;
   margin: 1em;
   padding: 0.25em 1em;
   &:hover {
-    background: palevioletred;
-    color: white;
+    background: ${({ theme }) => theme.main};
+    color: ${({ theme }) => theme.secondary};
   }
-  border: 2px solid palevioletred;
+
+  border: ${({ theme }) => `2px solid ${theme.main}`};
   border-radius: 4px;
 `;
 
