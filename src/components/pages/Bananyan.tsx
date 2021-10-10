@@ -53,7 +53,7 @@ export const Bananyan: React.FC<BananyanProps> = ({ hasGodMode, show }) => {
      * PRs WELCOME
      */
     let transparentDragImage = new Image();
-    transparentDragImage.src = '/image/transparent.png';
+    transparentDragImage.src = './image/transparent.png';
     e.dataTransfer.setDragImage(transparentDragImage, 0, 0);
   };
 

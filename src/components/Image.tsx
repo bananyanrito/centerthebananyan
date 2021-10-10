@@ -42,7 +42,7 @@ export class ImageContainer extends React.Component<{}, {}> {
       <FlexContainer tabIndex={1} {...BananyanDimensions}>
         <StyledImage
           alt='bananyan cat'
-          src='/image/goldenbananyan.png'
+          src='./image/goldenbananyan.png'
           ref={this.imageRef}
         />
       </FlexContainer>
