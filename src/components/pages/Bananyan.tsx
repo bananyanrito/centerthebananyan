@@ -5,12 +5,11 @@ import { BananyanDimensions } from '../../constants';
 
 interface BananyanProps {
   hasGodMode: boolean;
-  show: boolean;
 }
 
 const MOVEMENT_SENSITIVITY = 10;
 
-export const Bananyan: React.FC<BananyanProps> = ({ hasGodMode, show }) => {
+export const Bananyan: React.FC<BananyanProps> = ({ hasGodMode }) => {
   const [top, setTop] = useState<number>(
     () => window.innerHeight * Math.random() * 0.5
   );
@@ -55,6 +54,7 @@ export const Bananyan: React.FC<BananyanProps> = ({ hasGodMode, show }) => {
     let transparentDragImage = new Image();
     transparentDragImage.src = './image/transparent.png';
     e.dataTransfer.setDragImage(transparentDragImage, 0, 0);
+    e.dataTransfer.setData('text', 'firefox are you for reals');
   };
 
   const onDragHandler = (e: React.DragEvent<HTMLDivElement>) => {
@@ -69,7 +69,7 @@ export const Bananyan: React.FC<BananyanProps> = ({ hasGodMode, show }) => {
     bananyanRef?.current && bananyanRef?.current.focus();
   });
 
-  return show ? (
+  return (
     <AbsolutePosContainer
       id='bananyan-div'
       top={top}
@@ -84,5 +84,5 @@ export const Bananyan: React.FC<BananyanProps> = ({ hasGodMode, show }) => {
     >
       <ImageContainer ref={bananyanRef} />
     </AbsolutePosContainer>
-  ) : null;
+  );
 };

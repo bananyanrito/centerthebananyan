@@ -30,10 +30,7 @@ export const Page: React.FC<PageProps> = ({
       return (
         <>
           <CanvasPage hasGodMode={hasGodMode} />
-          <Bananyan
-            show={pageState === PageState.CANVAS}
-            hasGodMode={hasGodMode}
-          />
+          <Bananyan hasGodMode={hasGodMode} />
         </>
       );
     case PageState.WIN:
